@@ -52,7 +52,7 @@
                                 var ref = firebase.database().ref('/');
                                 ref.on('value', function(snapshot) {
                                     var data = snapshot.val();
-                                    console.log(data);
+
                                     var last = 0;
                                     for (t in data) {
                                         if (t > last) {
@@ -108,12 +108,11 @@
                     series: [{
                         name: 'Nombre de capture',
                         data: (function() {
-                            // generate an array of random data
+                            // generate an array of null data
                             var data = [],
-                                time = (new Date()).getTime(),
-                                i;
+                                time = (new Date()).getTime();
 
-                            for (i = -20; i <= 0; i += 1) {
+                            for (var i = -20; i <= 0; i += 1) {
                                 data.push({
                                     x: time + i * 1000,
                                     y: 0
@@ -127,6 +126,7 @@
         });
     </script>
     <script src="./theme.js"></script>
+    <style>body { background-color : #212121; }</style>
 </body>
 
 </html>

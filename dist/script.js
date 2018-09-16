@@ -9,7 +9,6 @@ var config = {
 
 firebase.initializeApp(config);
 
-
 var SEGMENT_URL,
     SEGMENT_TIME;
 
@@ -60,19 +59,15 @@ $(document).ready(function() {
     $('#defaultAudioCodec').val(defaultAudioCodec || "undefined");
 
     $('h1').append(' <a target=_blank href=https://github.com/dailymotion/hls.js/releases/tag/v' + Hls.version + '>v' + Hls.version + '</a>');
-
 });
 
-
-
-
-'use strict';
 var hls, events, stats, tracks,
     enableStreaming = JSON.parse(getURLParam('enableStreaming', true))
-autoRecoverError = JSON.parse(getURLParam('autoRecoverError', true)),
+    autoRecoverError = JSON.parse(getURLParam('autoRecoverError', true)),
     enableWorker = JSON.parse(getURLParam('enableWorker', true)),
     levelCapping = JSON.parse(getURLParam('levelCapping', -1)),
     defaultAudioCodec = getURLParam('defaultAudioCodec', undefined);
+
 var video = $('#video')[0];
 video.volume = 0.05;
 $("#currentVersion").html("Hls version:" + Hls.version);
@@ -351,8 +346,6 @@ function loadStream(url) {
             }
         });
 
-
-
         hls.on(Hls.Events.ERROR, function(event, data) {
             switch (data.details) {
                 case Hls.ErrorDetails.MANIFEST_LOAD_ERROR:
@@ -488,7 +481,6 @@ function loadStream(url) {
     }
 }
 
-
 var lastSeekingIdx, lastStartPosition, lastDuration;
 
 function handleVideoEvent(evt) {
@@ -563,7 +555,6 @@ function handleVideoEvent(evt) {
     }
 }
 
-
 var recoverDecodingErrorDate, recoverSwapAudioCodecDate;
 
 function handleMediaError() {
@@ -585,7 +576,6 @@ function handleMediaError() {
         }
     }
 }
-
 
 function timeRangesToString(r) {
     var log = "";
@@ -716,7 +706,6 @@ function sortObject(obj) {
     return temp;
 }
 
-
 function showCanvas() {
     showMetrics();
     $("#buffered_log").show();
@@ -795,7 +784,6 @@ function updateLevelInfo() {
         html1 += button_disabled;
     }
     html1 += 'onclick="hls.currentLevel=-1">auto</button>';
-
 
     var html2 = button_template;
     if (hls.autoLevelEnabled) {
@@ -900,7 +888,6 @@ function updateAudioTrackInfo() {
     $("#audioTrackControl").html(html1);
 }
 
-
 function level2label(index) {
     if (hls && hls.levels.length - 1 >= index) {
         var level = hls.levels[index];
@@ -919,7 +906,6 @@ function level2label(index) {
         }
     }
 }
-
 
 function getURLParam(sParam, defaultValue) {
     var sPageURL = window.location.search.substring(1);
